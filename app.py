@@ -77,6 +77,12 @@ st.markdown("""
         background-color: var(--card-bg) !important;
         border-right: 1px solid rgba(255,255,255,0.05);
     }
+    [data-testid="stSidebar"] h1,
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3,
+    [data-testid="stSidebar"] label {
+        color: #FFFFFF !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
