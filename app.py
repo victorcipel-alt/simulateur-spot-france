@@ -258,31 +258,6 @@ with col_side:
         
     st.metric("Volume Échangé", f"{clearing_volume:,.0f} MW")
     st.metric("Capacité Disponible", f"{total_supply:,.0f} MW")
-    
-    st.markdown("---")
-    st.markdown("### Mix Énergétique")
-    
-    # Mix Chart (Donut) sur fond blanc
-    df_mix = df.groupby(['Fournisseur', 'Couleur'])['Volume (MW)'].sum().reset_index()
-    fig_mix = go.Figure(data=[go.Pie(
-        labels=df_mix['Fournisseur'], 
-        values=df_mix['Volume (MW)'],
-        hole=.6,
-        marker_colors=df_mix['Couleur'],
-        textfont=dict(color="black"),
-    )])
-    fig_mix.update_layout(
-        showlegend=True, 
-        paper_bgcolor="white",
-        plot_bgcolor="white",
-        margin=dict(t=10, b=60, l=10, r=10),
-        height=320,
-        legend=dict(orientation="h", yanchor="top", y=-0.05, xanchor="center", x=0.5, font=dict(color="black"))
-    )
-
-    st.markdown("""<div style="background-color: white; padding: 10px; padding-bottom: 25px; border-radius: 12px; border: 1px solid #ADFF2F;">""", unsafe_allow_html=True)
-    st.plotly_chart(fig_mix, use_container_width=True)
-    st.markdown("""</div>""", unsafe_allow_html=True)
 
 with col_main:
     st.markdown("### Courbe d'Ordres (Merit Order)")
@@ -320,4 +295,28 @@ with col_main:
     )
 
     st.plotly_chart(fig, use_container_width=True)
+    
+    st.markdown("---")
+    st.markdown("### Mix Énergétique (Parts de Marché)")
+    
+    # Mix Chart (Donut) sur fond noir/transparent
+    df_mix = df.groupby(['Fournisseur', 'Couleur'])['Volume (MW)'].sum().reset_index()
+    fig_mix = go.Figure(data=[go.Pie(
+        labels=df_mix['Fournisseur'], 
+        values=df_mix['Volume (MW)'],
+        hole=.6,
+        marker_colors=df_mix['Couleur'],
+        textfont=dict(color="white"),
+    )])
+    fig_mix.update_layout(
+        showlegend=True, 
+        template="plotly_dark",
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        margin=dict(t=10, b=10, l=10, r=10),
+        height=350,
+        legend=dict(orientation="h", yanchor="bottom", y=1.0, xanchor="center", x=0.5, font=dict(color="white"))
+    )
+
+    st.plotly_chart(fig_mix, use_container_width=True)
 
