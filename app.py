@@ -30,27 +30,23 @@ st.markdown("""
     
     header { visibility: hidden; }
     
-    /* Metrics Styling (Résultats SPOT): fond transparent, texte blanc, encadré vert */
+    /* Metrics Styling (Résultats SPOT) */
     div[data-testid="metric-container"] {
-        background-color: transparent !important;
+        background-color: rgba(255, 255, 255, 0.05) !important;
         border: 2px solid #ADFF2F !important;
         border-radius: 8px !important;
-        padding: 15px !important;
-        box-shadow: 0 4px 15px rgba(173,255,47,0.1) !important;
+        padding: 20px !important;
+        box-shadow: 0 4px 15px rgba(173,255,47,0.2) !important;
     }
-    div[data-testid="metric-container"] > div {
+    div[data-testid="stMetricValue"] {
         color: #FFFFFF !important;
+        font-size: 2.2rem !important;
+        font-weight: 800 !important;
     }
-    div[data-testid="metric-container"] > div > div {
-        color: #FFFFFF !important;
-    }
-    div[data-testid="metric-container"] > div > div > div {
-        color: #FFFFFF !important;
-    }
-    div[data-testid="metric-container"] label {
-        color: #FFFFFF !important;
-        font-weight: bold;
-        font-size: 1.1rem;
+    div[data-testid="stMetricLabel"] {
+        color: #ADFF2F !important;
+        font-weight: 700 !important;
+        font-size: 1.2rem !important;
     }
 
     /* Boutons personnalisés (Ajustés pour ne pas déborder dans la sidebar) */
@@ -118,6 +114,9 @@ PRODUCER_CONFIGS = [
 ]
 
 # --- INIT SESSION STATE ---
+if 'show_guide' not in st.session_state:
+    st.session_state.show_guide = False
+
 if 'ui_demande_globale' not in st.session_state:
     st.session_state.ui_demande_globale = 55000
 
@@ -173,9 +172,9 @@ with c_title:
 with c_btn:
     st.markdown("<br>", unsafe_allow_html=True)
     if st.button("❓ Guide d'emploi", use_container_width=True):
-        st.session_state.show_guide = not st.session_state.get('show_guide', False)
+        st.session_state.show_guide = not st.session_state.show_guide
 
-if st.session_state.get('show_guide', False):
+if st.session_state.show_guide:
     st.info("""
     **Bienvenue ! Ce site simule de façon interactive le mécanisme de formation des prix SPOT en France (marché Day-Ahead).**
 
@@ -277,12 +276,12 @@ with col_side:
         showlegend=True, 
         paper_bgcolor="white",
         plot_bgcolor="white",
-        margin=dict(t=10, b=10, l=10, r=10),
-        height=300,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="center", x=0.5, font=dict(color="black"))
+        margin=dict(t=10, b=60, l=10, r=10),
+        height=320,
+        legend=dict(orientation="h", yanchor="top", y=-0.05, xanchor="center", x=0.5, font=dict(color="black"))
     )
 
-    st.markdown("""<div style="background-color: white; padding: 10px; border-radius: 12px; border: 1px solid #ADFF2F;">""", unsafe_allow_html=True)
+    st.markdown("""<div style="background-color: white; padding: 10px; padding-bottom: 25px; border-radius: 12px; border: 1px solid #ADFF2F;">""", unsafe_allow_html=True)
     st.plotly_chart(fig_mix, use_container_width=True)
     st.markdown("""</div>""", unsafe_allow_html=True)
 
