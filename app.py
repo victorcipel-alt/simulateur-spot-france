@@ -167,7 +167,6 @@ def random_orders():
 c_title, c_btn = st.columns([5, 1])
 with c_title:
     st.title("⚡ Simulateur SPOT France")
-    st.markdown("Formation du prix d'équilibre (Mécanisme **Pay-as-Clear**)")
 
 with c_btn:
     st.markdown("<br>", unsafe_allow_html=True)
