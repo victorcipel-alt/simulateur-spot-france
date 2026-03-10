@@ -37,13 +37,6 @@ st.markdown("""
         border-radius: 8px !important;
         padding: 15px !important;
     }
-    /* Encadré exclusif pour la 1ère métrique (Prix d'Equilibre) */
-    [data-testid="stVerticalBlock"] > div > div:nth-child(1) [data-testid="metric-container"] {
-        background: linear-gradient(135deg, rgba(173,255,47,0.15) 0%, rgba(173,255,47,0.05) 100%) !important;
-        border: 3px solid #ADFF2F !important;
-        box-shadow: 0 0 20px rgba(173, 255, 47, 0.4) !important;
-        transform: scale(1.02);
-    }
     div[data-testid="stMetricValue"] {
         color: #FFFFFF !important;
         font-size: 1.8rem !important; /* Réduit pour voir les unités */
@@ -272,9 +265,26 @@ with col_side:
     st.markdown("### 📊 Résultats SPOT (J-1)")
     
     if is_shortage:
-        st.metric("Prix d'Équilibre", "MAX (3000 €)", delta="Pénurie Réseau", delta_color="inverse")
+        prix_text = "MAX (3000 €)"
+        delta_html = """<div style="color: #FF4B4B; font-size: 1rem; margin-top: 5px; font-weight: bold;">⚠️ Pénurie Réseau</div>"""
     else:
-        st.metric("Prix d'Équilibre", f"{clearing_price:,.2f} €/MWh")
+        prix_text = f"{clearing_price:,.2f} €/MWh"
+        delta_html = ""
+
+    st.markdown(f"""
+    <div style="
+        background: linear-gradient(135deg, rgba(173,255,47,0.15) 0%, rgba(173,255,47,0.05) 100%);
+        border: 3px solid #ADFF2F;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 1rem;
+        box-shadow: 0 0 20px rgba(173, 255, 47, 0.3);
+    ">
+        <div style="color: #E2FF99; font-weight: 700; font-size: 1.1rem; margin-bottom: 2px;">Prix d'Équilibre</div>
+        <div style="color: #FFFFFF; font-size: 1.8rem; font-weight: 700;">{prix_text}</div>
+        {delta_html}
+    </div>
+    """, unsafe_allow_html=True)
         
     st.metric("Volume Échangé", f"{clearing_volume:,.0f} MW")
     st.metric("Capacité Disponible", f"{total_supply:,.0f} MW")
