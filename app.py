@@ -275,14 +275,14 @@ with col_side:
 
     st.markdown(f"""
     <div style="
-        background: linear-gradient(135deg, rgba(173,255,47,0.15) 0%, rgba(173,255,47,0.05) 100%);
-        border: 3px solid #ADFF2F;
+        background: linear-gradient(135deg, rgba(255,215,0,0.15) 0%, rgba(255,215,0,0.05) 100%);
+        border: 3px solid #FFD700;
         border-radius: 10px;
         padding: 15px;
         margin-bottom: 1rem;
-        box-shadow: 0 0 20px rgba(173, 255, 47, 0.3);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     ">
-        <div style="color: #E2FF99; font-weight: 700; font-size: 1.1rem; margin-bottom: 2px;">Prix d'Équilibre</div>
+        <div style="color: #FFEA70; font-weight: 700; font-size: 1.1rem; margin-bottom: 2px;">Prix d'Équilibre</div>
         <div style="color: #FFFFFF; font-size: 1.8rem; font-weight: 700;">{prix_text}</div>
         {delta_html}
     </div>
