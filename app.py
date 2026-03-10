@@ -317,7 +317,7 @@ with col_main:
     ))
 
     fig.update_layout(
-        title="Croisement Offre & Demande",
+        title=dict(text="Croisement Offre & Demande", font=dict(color="#E0E0E0")),
         xaxis_title="Volume Cumulé (MW)",
         yaxis_title="Prix (€)",
         template="plotly_dark",
