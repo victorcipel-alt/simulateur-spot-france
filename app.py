@@ -43,7 +43,7 @@ st.markdown("""
         font-weight: 700 !important;
     }
     div[data-testid="stMetricLabel"] {
-        color: #E2FF99 !important; /* Vert très clair/lumineux pour la lisibilité */
+        color: #FFFFFF !important; /* Blanc demandé pour Volume et Capacité */
         font-weight: 700 !important;
         font-size: 1.1rem !important;
     }
