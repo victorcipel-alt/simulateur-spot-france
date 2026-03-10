@@ -65,11 +65,19 @@ st.markdown("""
         color: #ADFF2F;
     }
 
-    #btn-guide > button {
+    /* Bouton Guide d'emploi spécifique (via le type primary si on l'utilise ou style ciblé) */
+    button[data-testid="baseButton-primary"] {
         background: var(--accent-tertiary) !important;
-        color: black !important;
+        color: #000000 !important;
         border: none !important;
-        font-weight: bold;
+        font-weight: 900 !important;
+        font-size: 1.1rem !important;
+        padding: 10px 20px !important;
+        box-shadow: 0 4px 15px rgba(43, 217, 175, 0.3) !important;
+    }
+    button[data-testid="baseButton-primary"]:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 20px rgba(43, 217, 175, 0.5) !important;
     }
     
     /* Sidebar Focus */
@@ -176,7 +184,7 @@ with c_title:
 
 with c_btn:
     st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("❓ Guide d'emploi", use_container_width=True):
+    if st.button("Guide d'emploi ❓", type="primary", use_container_width=True):
         st.session_state.show_guide = not st.session_state.show_guide
 
 if st.session_state.show_guide:
@@ -185,7 +193,7 @@ if st.session_state.show_guide:
 
     **Comment utiliser l'interface ?**
     1. **Gérer la Demande :** Saisissez manuellement un volume à gauche, ou cliquez sur "Scénario Aléatoire" pour simuler une consommation réaliste (du creux d'été à la pointe d'hiver).
-    2. **Observer l'Offre :** Le carnet d'ordres liste les centrales à droite. Cliquez sur "Ordres Aléatoires" (icône tournante) pour simuler la disponibilité des énergies au quotidien (panne nucléaire, fort vent, etc).
+    2. **Observer l'Offre :** Le carnet d'ordres liste les centrales à droite. Cliquez sur "Ordres Aléatoires" (icône tournante) pour simuler la disponibilité des énergies au quotidien.
     3. **Analyser le Prix (Clearing) :** Le graphique Merit Order se met à jour en direct. Le marché empile les offres de la moins chère (Solaire/Éolien) à la plus chère (Gaz/Secours). Le croisement avec la demande détermine le Prix d'Équilibre.
     4. **Tester des cas extrêmes :** Modifiez manuellement le volume (MW) ou le prix proposé (€) de n'importe quelle énergie du carnet d'ordres pour manipuler la courbe économique.
     
