@@ -35,18 +35,18 @@ st.markdown("""
         background-color: rgba(255, 255, 255, 0.05) !important;
         border: 2px solid #ADFF2F !important;
         border-radius: 8px !important;
-        padding: 20px !important;
+        padding: 15px !important;
         box-shadow: 0 4px 15px rgba(173,255,47,0.2) !important;
     }
     div[data-testid="stMetricValue"] {
         color: #FFFFFF !important;
-        font-size: 2.2rem !important;
-        font-weight: 800 !important;
+        font-size: 1.8rem !important; /* Réduit pour voir les unités */
+        font-weight: 700 !important;
     }
     div[data-testid="stMetricLabel"] {
-        color: #ADFF2F !important;
+        color: #E2FF99 !important; /* Vert très clair/lumineux pour la lisibilité */
         font-weight: 700 !important;
-        font-size: 1.2rem !important;
+        font-size: 1.1rem !important;
     }
 
     /* Boutons personnalisés (Ajustés pour ne pas déborder dans la sidebar) */
