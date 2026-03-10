@@ -265,11 +265,29 @@ else:
 with col_side:
     st.markdown("### 📊 Résultats SPOT (J-1)")
     
+    # Encadré personnalisé très visible pour le Prix d'Equilibre
+    st.markdown("""
+        <style>
+        .prix-equilibre-box {
+            background: linear-gradient(135deg, rgba(173,255,47,0.15) 0%, rgba(173,255,47,0.05) 100%);
+            border: 3px solid #ADFF2F;
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(173, 255, 47, 0.4);
+        }
+        </style>
+        <div class="prix-equilibre-box">
+    """, unsafe_allow_html=True)
+    
     if is_shortage:
         st.metric("Prix d'Équilibre", "MAX (3000 €)", delta="Pénurie Réseau", delta_color="inverse")
     else:
         st.metric("Prix d'Équilibre", f"{clearing_price:,.2f} €/MWh")
         
+    st.markdown("</div>", unsafe_allow_html=True)
+    
+    # Autres métriques secondaires
     st.metric("Volume Échangé", f"{clearing_volume:,.0f} MW")
     st.metric("Capacité Disponible", f"{total_supply:,.0f} MW")
 
