@@ -42,10 +42,10 @@ st.markdown("""
         font-size: 1.8rem !important; /* Réduit pour voir les unités */
         font-weight: 700 !important;
     }
-    div[data-testid="stMetricLabel"],
+    label[data-testid="stMetricLabel"] *,
     div[data-testid="stMetricLabel"] *,
-    div[data-testid="metric-container"] label {
-        color: #FFFFFF !important; /* Blanc demandé pour Volume et Capacité */
+    [data-testid="metric-container"] label * {
+        color: #FFFFFF !important;
         font-weight: 700 !important;
         font-size: 1.1rem !important;
     }
@@ -317,11 +317,14 @@ with col_main:
     ))
 
     fig.update_layout(
-        xaxis_title="Volume Cumulé (MW)", yaxis_title="Prix (€/MWh)",
-        template="plotly_dark", hovermode="x unified",
+        title="Croisement Offre & Demande",
+        xaxis_title="Volume Cumulé (MW)",
+        yaxis_title="Prix (€)",
+        template="plotly_dark",
+        hovermode="x unified",
         margin=dict(l=0, r=0, t=10, b=40),
         height=550,
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1, font=dict(color="white")),
         plot_bgcolor="rgba(0,0,0,0)",
         paper_bgcolor="rgba(0,0,0,0)"
     )
