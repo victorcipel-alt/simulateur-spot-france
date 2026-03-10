@@ -225,7 +225,7 @@ with st.sidebar:
                 
                 c_vol, c_px = st.columns(2)
                 vol_val = c_vol.number_input(f"{asset['type']} (MW)", min_value=0, step=100, key=k_vol)
-                px_val = c_px.number_input(f"Prix (€)", min_value=0.0, step=1.0, disabled=('price_fixed' in asset), key=k_px)
+                px_val = c_px.number_input(f"Prix (€)", min_value=0.0, step=1.0, key=k_px)
                 
                 if vol_val > 0:
                     active_orders.append({
