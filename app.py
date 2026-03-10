@@ -177,10 +177,16 @@ with c_btn:
 
 if st.session_state.get('show_guide', False):
     st.info("""
+    **Bienvenue ! Ce site simule de façon interactive le mécanisme de formation des prix SPOT en France (marché Day-Ahead).**
+
     **Comment utiliser l'interface ?**
-    1. **Gérer la Demande :** Saisissez manuellement un volume à gauche, ou cliquez sur *🎲 Aléatoire*.
-    2. **Observer l'Offre :** Modifiez les volumes et prix dans le carnet d'ordres, ou générez des *🎲 Ordres Aléatoires*.
-    3. **Analyser le Prix (Clearing) :** Le croisement de l'offre (escalier) et de la demande fixe le **Prix d'Équilibre**.
+    1. **Gérer la Demande :** Saisissez manuellement un volume à gauche, ou cliquez sur "Scénario Aléatoire" pour simuler une consommation réaliste (du creux d'été à la pointe d'hiver).
+    2. **Observer l'Offre :** Le carnet d'ordres liste les centrales à droite. Cliquez sur "Ordres Aléatoires" (icône tournante) pour simuler la disponibilité des énergies au quotidien (panne nucléaire, fort vent, etc).
+    3. **Analyser le Prix (Clearing) :** Le graphique Merit Order se met à jour en direct. Le marché empile les offres de la moins chère (Solaire/Éolien) à la plus chère (Gaz/Secours). Le croisement avec la demande détermine le Prix d'Équilibre.
+    4. **Tester des cas extrêmes :** Modifiez manuellement le volume (MW) ou le prix proposé (€) de n'importe quelle énergie du carnet d'ordres pour manipuler la courbe économique.
+    
+    **La Méthode Pay-as-Clear**
+    C'est la règle européenne : l'outil empile les vendeurs en commençant par les Énergies Renouvelables (proposées à 0€ et prioritaires) jusqu'à ce que la demande soit couverte. Le prix marginal de la toute dernière centrale électrique allumée fixe le prix au mégawatt pour tout le monde ce jour-là.
     """)
 
 # --- LAYOUT PRINCIPAL ---
