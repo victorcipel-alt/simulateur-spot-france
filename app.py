@@ -295,7 +295,7 @@ with col_main:
     st.markdown("### Courbe d'Ordres (Merit Order)")
     
     x_hv = [0] + dff['Volume Cumulé (MW)'].tolist()
-    y_hv = [dff.iloc[0]['Prix (€/MWh)']] + dff['Prix (€/MWh)'].tolist()
+    y_hv = dff['Prix (€/MWh)'].tolist() + [dff.iloc[-1]['Prix (€/MWh)']]
 
     fig = go.Figure()
 
