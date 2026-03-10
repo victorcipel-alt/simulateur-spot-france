@@ -42,7 +42,9 @@ st.markdown("""
         font-size: 1.8rem !important; /* Réduit pour voir les unités */
         font-weight: 700 !important;
     }
-    div[data-testid="stMetricLabel"] {
+    div[data-testid="stMetricLabel"],
+    div[data-testid="stMetricLabel"] *,
+    div[data-testid="metric-container"] label {
         color: #FFFFFF !important; /* Blanc demandé pour Volume et Capacité */
         font-weight: 700 !important;
         font-size: 1.1rem !important;
