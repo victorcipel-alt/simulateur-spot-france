@@ -303,7 +303,8 @@ with col_main:
     fig.add_trace(go.Scatter(
         x=x_hv, y=y_hv, mode='lines', line_shape='hv',
         name="Offre", fill='tozeroy', fillcolor='rgba(255, 255, 255, 0.05)',
-        line=dict(color='#FFFFFF', width=2)
+        line=dict(color='#FFFFFF', width=2),
+        hovertemplate="Volume : <b>%{x:,.0f} MW</b><br>Prix : <b>%{y:,.2f} €/MWh</b><extra></extra>"
     ))
 
     # Demande (Verticale)
@@ -313,7 +314,8 @@ with col_main:
         y=[0, max_p],
         mode='lines',
         name="Demande",
-        line=dict(color='#ADFF2F', width=2, dash='dash')
+        line=dict(color='#ADFF2F', width=2, dash='dash'),
+        hovertemplate="Demande Fixe : <b>%{x:,.0f} MW</b><extra></extra>"
     ))
 
     fig.update_layout(
