@@ -114,7 +114,7 @@ PRODUCER_CONFIGS = [
             {'type': 'Charbon', 'price_fixed': 120, 'default_vol': 1500, 'default_price': 120},
             {'type': 'Fioul', 'price_fixed': 150, 'default_vol': 2000, 'default_price': 150},
             {'type': 'Gaz (CCGT)', 'price_fixed': 500, 'default_vol': 5000, 'default_price': 500},
-            {'type': 'Secours (TAC)', 'price_fixed': 3000, 'default_vol': 1500, 'default_price': 3000}
+            {'type': 'Secours (TAC)', 'price_fixed': 1000, 'default_vol': 1500, 'default_price': 1000}
         ]
     },
     {
